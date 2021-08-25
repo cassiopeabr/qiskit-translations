@@ -572,17 +572,16 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="admonition note">
 <p class="admonition-title">備註</p>
-<p>This page was generated from <a class="reference external" href="https://github.com/Qiskit/qiskit-tutorials/blob/master/tutorials/algorithms/01_algorithms_introduction.ipynb">tutorials/algorithms/01_algorithms_introduction.ipynb</a>.</p>
+<p>這頁面是由 <a href="#id2"><span class="problematic" id="id3">`tutorials/algorithms/01_algorithms_introduction.ipynb`__</span></a> 產生的。</p>
 </div>
 <section id="Qiskit-中的演算法簡介">
 <h1>Qiskit 中的演算法簡介<a class="headerlink" href="#Qiskit-中的演算法簡介" title="本標題的永久連結">¶</a></h1>
-<p>這是 Qiskit 中的演算法簡介，並提供高階概觀，以協助瞭解要開始使用各方面的功能。 其他指導教學將提供更深入的資料、既定的演算法，以及使用方法等。</p>
+<p>這是 Qiskit 中的演算法簡介，並提供高階概觀，以協助瞭解要開始使用各方面的功能。其他指導教學將提供更深入的資料、既定的演算法，以及使用方法等。</p>
 <section id="演算法程式庫的結構方式為何？">
 <h2>演算法程式庫的結構方式為何？<a class="headerlink" href="#演算法程式庫的結構方式為何？" title="本標題的永久連結">¶</a></h2>
-<p>Qiskit provides a number of <a class="reference external" href="https://qiskit.org/documentation/apidoc/algorithms.html">Algorithms</a> and they are grouped by category according to the task they can perform. For instance <code class="docutils literal notranslate"><span class="pre">Minimum</span> <span class="pre">Eigensolvers</span></code> to find the smallest eigen value of an operator, for example ground state energy of a chemistry Hamiltonian or a solution to an optimization problem when expressed as an Ising Hamiltonian. There are <code class="docutils literal notranslate"><span class="pre">Linear</span> <span class="pre">Solvers</span></code> for linear systems of equations problems and <code class="docutils literal notranslate"><span class="pre">Amplitude</span> <span class="pre">Estimators</span></code>
-for value estimation that can be used say in financial applications. The full set of categories can be seen in the Algorithms documentation link above.</p>
-<p>Algorithms are configurable and often part of the configuration will be in the form of smaller building blocks, of which different instances of the building block type can be given. For instance with <code class="docutils literal notranslate"><span class="pre">VQE</span></code>, the Variational Quantum Eigensolver, it takes a trial wavefunction, in the form of a <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> and a classical optimizer among other things.</p>
-<p>Let’s take a look at an example to construct a VQE instance. Here <code class="docutils literal notranslate"><span class="pre">TwoLocal</span></code> is the variational form (trial wavefunction), a parameterized circuit which can be varied, and <code class="docutils literal notranslate"><span class="pre">SLSQP</span></code> a classical optimizer. These are created as separate instances and passed to VQE when it is constructed. Trying, for example, a different classical optimizer, or variational form is simply a case of creating an instance of the one you want and passing it into VQE.</p>
+<p>Qiskit 提供了許多 <a href="#id2"><span class="problematic" id="id4">`Algorithms&lt;https://qiskit.org/documentation/apidoc/algorithms.html&gt;`__</span></a> ，它們依種類分組，根據它們可以執行的作業來分類。例如，<code class="docutils literal notranslate"><span class="pre">Minimum</span> <span class="pre">Eigensolvers</span></code> 可以找出一個算子的最小特徵值，例如，化學 Hamiltonian 的基態能量或對最佳化問題的解當問題可以用 Ising Hamiltonian 表示時。另外有 <code class="docutils literal notranslate"><span class="pre">Linear</span> <span class="pre">Solvers</span></code> 可以解線性系統的方程問題，以``Amplitude Estimators`` 可以用在像是金融相關應用的數值估計。您可以在上面的演算法文件鏈結中看到完整的種類集。</p>
+<p>演算法是可配置的，且通常部分配置會以較小的建置區塊形式存在，而對於每個小建置區塊，有相對應的不同實例可以選擇。例如，<code class="docutils literal notranslate"><span class="pre">VQE</span></code>，Variational Quantum Eigensover，它有一個 <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> 形式的試驗波函數和一個古典優化器等等。</p>
+<p>讓我們來看看一個範例來建構 VQE 實例。這裡 <code class="docutils literal notranslate"><span class="pre">TwoLocal</span></code> 是變數形式(試驗波函數)，可改變的參數化電路，以及 <code class="docutils literal notranslate"><span class="pre">SLSQP</span></code> 古典優化器。這些會建立為個別實例，並在建構時傳遞至 VQE。例如，嘗試不同的古典優化器，或變異形式，只是建立一個您想要的實例，並將其傳遞至 VQE 的案例。</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -599,7 +598,7 @@ for value estimation that can be used say in financial applications. The full se
 </pre></div>
 </div>
 </div>
-<p>Let’s draw the ansatz so we can see it’s a QuantumCircuit where θ[0] through θ[7] will be the parameters that are varied as VQE optimizer finds the minimum eigenvalue. We’ll come back to the parameters later in a working example below.</p>
+<p>讓我們繪出擬設，這樣我們就能看到它是一個 QuantumCircuit，其中 θ[0] 通過 θ[7] 將會是 VQE 優化器發現最小特徵值的參數。我們稍後會在下面的一個工作範例中，重新回到參數。</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -622,8 +621,8 @@ q_1: ┤ RY(θ[1]) ├─■─┤ RY(θ[3]) ├─■─┤ RY(θ[5]) ├─■
 </div>
 <p>But more is needed before we can run the algorithm so let’s get to that next.</p>
 </section>
-<section id="How-to-run-an-algorithm?">
-<h2>How to run an algorithm?<a class="headerlink" href="#How-to-run-an-algorithm?" title="本標題的永久連結">¶</a></h2>
+<section id="如何執行演算法？">
+<h2>如何執行演算法？<a class="headerlink" href="#如何執行演算法？" title="本標題的永久連結">¶</a></h2>
 <p>In order to run an algorithm we need to have backend, a simulator or real device, on which the circuits that comprise the algorithm can be run. So for example we can use the <code class="docutils literal notranslate"><span class="pre">aer_simulator_statevector</span></code> from the Aer provider.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -650,12 +649,11 @@ q_1: ┤ RY(θ[1]) ├─■─┤ RY(θ[3]) ├─■─┤ RY(θ[5]) ├─■
 </div>
 </div>
 <p>Note: if you provide the backend directly then internally a QuantumInstance will be created from it, with default settings, so at all times the algorithms are working through a QuantumInstance.</p>
-<p>So now we would be able to call the <a class="reference external" href="https://qiskit.org/documentation/stubs/qiskit.algorithms.VQE.html#qiskit.algorithms.VQE.compute_minimum_eigenvalue">compute_mininum_eigenvalue()</a> method. The latter is the interface of choice for the application modules, such as Nature and Optimization, in order that they can work interchangeably with any algorithm within the specific category.</p>
+<p>因此，現在我們可以呼叫 <a class="reference external" href="https://qiskit.org/documentation/stubs/qiskit.algorithms.VQE.html#qiskit.algorithms.VQE.compute_minimum_eigenvalue">compute_mininum_eigenvalue()</a> 方法。後者是應用程式模組(例如 Nature 和 Optimization)的選擇介面，以讓它們可以與特定種類內的任何演算法互換地工作。</p>
 </section>
-<section id="A-complete-working-example">
-<h2>A complete working example<a class="headerlink" href="#A-complete-working-example" title="本標題的永久連結">¶</a></h2>
-<p>Let’s put what we have learned from above together and create a complete working example. VQE will find the minimum eigenvalue, i.e. minimum energy value of a Hamiltonian operator and hence we need such an operator for VQE to work with. Such an operator is given below. This was originally created by the Nature application module as the Hamiltonian for an H2 molecule at 0.735A interatomic distance. It’s a sum of Pauli terms as below, but for now I am not going to say anything further about it
-since the goal is to run the algorithm, but further information on operators can be found in other tutorials.</p>
+<section id="完整的工作範例">
+<h2>完整的工作範例<a class="headerlink" href="#完整的工作範例" title="本標題的永久連結">¶</a></h2>
+<p>讓我們把從上面學到的東西放在一起，創造出一個完整的工作範例。VQE 會找到最小特徵值，即 Hamiltonian 算子的最小能量值，因此我們需要一個用於 VQE 的算子來運行。下面我們給出了這樣的算子。此算子原本是由 Nature 應用模組以 0.735A 的原子間距離為 H2 分子的創建的 Hamiltonian。這是所有 Pauli 項的總和，如下，但現在關於這我不會再講更多了，因為我們的目標是執行此演算法，但在其他指導教學中可以找到關於算子的進一步資訊。</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
@@ -819,7 +817,7 @@ since the goal is to run the algorithm, but further information on operators can
   <div role="contentinfo">
     <p>
         &copy; Copyright 2021, Qiskit Development Team.
-      最後更新於 2021/08/23。
+      最後更新於 2021/08/25。
 
     </p>
   </div>
@@ -840,8 +838,8 @@ since the goal is to run the algorithm, but further information on operators can
               <ul>
 <li><a class="reference internal" href="#">Qiskit 中的演算法簡介</a><ul>
 <li><a class="reference internal" href="#演算法程式庫的結構方式為何？">演算法程式庫的結構方式為何？</a></li>
-<li><a class="reference internal" href="#How-to-run-an-algorithm?">How to run an algorithm?</a></li>
-<li><a class="reference internal" href="#A-complete-working-example">A complete working example</a></li>
+<li><a class="reference internal" href="#如何執行演算法？">如何執行演算法？</a></li>
+<li><a class="reference internal" href="#完整的工作範例">完整的工作範例</a></li>
 <li><a class="reference internal" href="#Using-VQE-setting-QuantumInstance-after-Construction">Using VQE setting QuantumInstance after Construction</a></li>
 </ul>
 </li>

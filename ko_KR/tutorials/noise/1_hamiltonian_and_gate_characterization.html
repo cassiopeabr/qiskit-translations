@@ -955,7 +955,7 @@ Angle error between X and Y: 0.096159 rads
 </section>
 <section id="CX-게이트의-진폭-에러-특성">
 <h2>CX 게이트의 진폭 에러 특성<a class="headerlink" href="#CX-게이트의-진폭-에러-특성" title="제목 주소">¶</a></h2>
-<p>This looks for a rotation error in the CX gate, i.e. if the gate is actually <span class="math notranslate nohighlight">\(CR_x(\pi/2+\delta)\)</span> measure <span class="math notranslate nohighlight">\(\delta\)</span>. This is very similar to the single qubit amplitude error calibration except we need to specify a control qubit (which is set to be in state <span class="math notranslate nohighlight">\(|1\rangle\)</span>) and the rotation is <span class="math notranslate nohighlight">\(\pi\)</span>.</p>
+<p>이는 CX 게이트에서의 회전 에러를 찾는 것, 즉 게이트가 실제로 <span class="math notranslate nohighlight">\(CR_x(\pi/2+\delta)\)</span> 인 경우에, <span class="math notranslate nohighlight">\(\delta\)</span> 를 측정한다. 이는 제어 비트 (상태 <span class="math notranslate nohighlight">\(|1\rangle\)</span> 로 설정됨) 를 지정할 필요가 없고, 회전이 <span class="math notranslate nohighlight">\(\pi\)</span> 인 것을 제외하고는, 단일 큐비트 진폭 에러 교정과 매우 유사하다.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
@@ -1069,7 +1069,7 @@ Rotation Error on CX: 0.149493 rads
 </section>
 <section id="CX-게이트의-각도-에러-특성">
 <h2>CX 게이트의 각도 에러 특성<a class="headerlink" href="#CX-게이트의-각도-에러-특성" title="제목 주소">¶</a></h2>
-<p>Measure the angle error <span class="math notranslate nohighlight">\(\theta\)</span> in the CX gate, i.e. <span class="math notranslate nohighlight">\(CR_{\cos(\theta)X+\sin(\theta)Y}(\pi/2)\)</span> with respect to the angle of the single qubit gates.</p>
+<p>CX 게이트에서 각도 에러 <span class="math notranslate nohighlight">\(\theta\)</span>, 즉 <span class="math notranslate nohighlight">\(CR_{\cos(\theta)X+\sin(\theta)Y}(\pi/2)\)</span> 를 단일 큐비트 게이트의 각도에 대해 측정한다.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
@@ -1230,7 +1230,7 @@ Rotation Error on CX: 0.099402 rads
   <div role="contentinfo">
     <p>
         &copy; Copyright 2021, Qiskit Development Team.
-      최종 업데이트: 2021/08/23
+      최종 업데이트: 2021/08/25
 
     </p>
   </div>

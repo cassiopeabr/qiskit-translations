@@ -581,7 +581,7 @@ div.rendered_html tbody tr:hover {
 <p>The Extended Simulator is a new method for classically simulating quantum circuits available in the latest release of <a class="reference external" href="https://github.com/qiskit/qiskit-aer">Qiskit-Aer</a>.</p>
 <p>This method is an implementation of the ideas published in the paper <em>Simulation of quantum circuits by low-rank stabilizer decompositions</em> by Bravyi, Browne, Calpin, Campbell, Gosset &amp; Howard, 2018, <a class="reference external" href="https://arxiv.org/abs/1808.00128">arXiv:1808.00128</a>.</p>
 <p>It uses a different representation of a quantum circuit, that gives it some unique capabilities. This notebook will give some examples of what the extended stabilizer method can do.</p>
-<p>For example:</p>
+<p>例如:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -790,8 +790,8 @@ This succeeded?: True
 </div>
 </div>
 </section>
-<section id="Simulator-Options">
-<h2>Simulator Options<a class="headerlink" href="#Simulator-Options" title="本標題的永久連結">¶</a></h2>
+<section id="模擬器選項">
+<h2>模擬器選項<a class="headerlink" href="#模擬器選項" title="本標題的永久連結">¶</a></h2>
 <p>There are several other options you can tweak to control how the extended stabilizer method performs. What these options are and their explanation can all be found in the Qiskit Aer documentation. However, I want to highlight two important ones that can help to optimize your simulations.</p>
 <p>To perform measurements, the extended stabilizer method uses a Markov chain method to sample outcomes at random. This Markov chain has to be run for some time we call the ‘mixing time’ before it will start sampling, and has to be re-mixed for every circuit shot.</p>
 <p>If you expect your circuit output to be concentrated on just a few output states, then you can likely optimize your simulations by reducing the <code class="docutils literal notranslate"><span class="pre">extended_stabilizer_mixing_time</span></code> option.</p>
@@ -928,7 +928,7 @@ With the optimization, 100 shots took 0.4958779811859131 s
   <div role="contentinfo">
     <p>
         &copy; Copyright 2021, Qiskit Development Team.
-      最後更新於 2021/08/23。
+      最後更新於 2021/08/25。
 
     </p>
   </div>
@@ -950,7 +950,7 @@ With the optimization, 100 shots took 0.4958779811859131 s
 <li><a class="reference internal" href="#">The Extended Stabilizer Simulator</a><ul>
 <li><a class="reference internal" href="#簡介">簡介</a></li>
 <li><a class="reference internal" href="#這是怎麼運作的？">這是怎麼運作的？</a></li>
-<li><a class="reference internal" href="#Simulator-Options">Simulator Options</a></li>
+<li><a class="reference internal" href="#模擬器選項">模擬器選項</a></li>
 <li><a class="reference internal" href="#什麼時候使用？">什麼時候使用？</a></li>
 </ul>
 </li>

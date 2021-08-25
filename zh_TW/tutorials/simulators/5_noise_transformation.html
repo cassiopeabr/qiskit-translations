@@ -580,7 +580,7 @@ div.rendered_html tbody tr:hover {
 <h2>簡介<a class="headerlink" href="#簡介" title="本標題的永久連結">¶</a></h2>
 <p>This notebook shows how to use the Qiskit Aer utility functions <code class="docutils literal notranslate"><span class="pre">approximate_quantum_error</span></code> and <code class="docutils literal notranslate"><span class="pre">approximate_noise_model</span></code> to transform quantum noise channels into a different, more suitable, noise channel.</p>
 <p>Our guiding example is Clifford simulation. A Clifford simulator can efficiently simulate quantum computations which include gates only from a limited, non-universal set of gates (the Clifford gates). Not all quantum noises can be added to such simulations; hence, we aim to find a “close” noise channel which can be simulated in a Clifford simulator.</p>
-<p>We begin by importing the transformation functions from the Aer provider utilities</p>
+<p>我們首先從 Aer 提供者公用程式導入轉換功能</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -695,8 +695,8 @@ P(2) = 0
 </div>
 <p>We got the results predicted analytically.</p>
 </section>
-<section id="Different-input-types">
-<h2>Different input types<a class="headerlink" href="#Different-input-types" title="本標題的永久連結">¶</a></h2>
+<section id="不同的輸入類型">
+<h2>不同的輸入類型<a class="headerlink" href="#不同的輸入類型" title="本標題的永久連結">¶</a></h2>
 <p>The approximation function is given two inputs: The error channel to approximate, and a set of error channels that can be used in constructing the approximation.</p>
 <p>The <strong>error channel</strong> to approximate can be given as any input that can be converted to the <code class="docutils literal notranslate"><span class="pre">QuantumError</span></code> object.</p>
 <p>As an example, we explicitly construct the Kraus matrices of amplitude damping and pass to the same approximation function as before:</p>
@@ -808,7 +808,7 @@ QuantumError on 1 qubits. Noise circuits:
   <div role="contentinfo">
     <p>
         &copy; Copyright 2021, Qiskit Development Team.
-      最後更新於 2021/08/23。
+      最後更新於 2021/08/25。
 
     </p>
   </div>
@@ -831,7 +831,7 @@ QuantumError on 1 qubits. Noise circuits:
 <li><a class="reference internal" href="#簡介">簡介</a></li>
 <li><a class="reference internal" href="#概述">概述</a></li>
 <li><a class="reference internal" href="#Example:-Approximating-amplitude-damping-noise-with-reset-noise.">Example: Approximating amplitude damping noise with reset noise.</a></li>
-<li><a class="reference internal" href="#Different-input-types">Different input types</a></li>
+<li><a class="reference internal" href="#不同的輸入類型">不同的輸入類型</a></li>
 </ul>
 </li>
 </ul>

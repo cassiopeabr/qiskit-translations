@@ -602,7 +602,7 @@ div.rendered_html tbody tr:hover {
 </section>
 <section id="Qiskit-Aer-雜訊模組">
 <h2>Qiskit Aer 雜訊模組<a class="headerlink" href="#Qiskit-Aer-雜訊模組" title="本標題的永久連結">¶</a></h2>
-<p>The Qiskit Aer <code class="docutils literal notranslate"><span class="pre">noise</span></code> module contains Python classes to build customized noise models for simulation. There are three key classes:</p>
+<p>Qiskit Aer <code class="docutils literal notranslate"><span class="pre">雜訊</span> <span class="pre">(noise)</span></code> 模組包含用於建立用於模擬的自訂雜訊模型的Python類別。 有三種主要類別：</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NoiseModel</span></code> 類別是用來儲存具有雜訊模擬的雜訊模型。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">`QuantumError</span></code> 類別用於描述 CPTP 閘誤差。 可套用以下項目：</p>
@@ -611,7 +611,7 @@ div.rendered_html tbody tr:hover {
 <li><p>在 <em>測量 (measure)</em> 指令之前。</p></li>
 </ul>
 </li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">ReadoutError</span></code> class which describes classical readout errors.</p></li>
+<li><p>描述古典讀取誤差的 <code class="docutils literal notranslate"><span class="pre">ReadoutError</span></code> 類別 。</p></li>
 </ol>
 </section>
 <section id="量子誤差">
@@ -629,7 +629,7 @@ div.rendered_html tbody tr:hover {
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kraus_error</span></code></p></td>
-<td><p>a general n-qubit CPTP error channel given as a list of Kraus matrices <span class="math notranslate nohighlight">\([K_0, ...]\)</span>.</p></td>
+<td><p>廣泛型的 n 量子位元 CPTP 誤差通道，以 Kraus 矩陣 <span class="math notranslate nohighlight">\([K_0, ...]\)</span> 的清單呈現</p></td>
 </tr>
 <tr class="row-odd"><td><p><a href="#id1"><span class="problematic" id="id2">``</span></a>mixed_unitary_error ``</p></td>
 <td><p>an n-qubit mixed unitary error given as a list of unitary matrices and probabilities <span class="math notranslate nohighlight">\([(U_0, p_0),...]\)</span>.</p></td>
@@ -644,16 +644,16 @@ div.rendered_html tbody tr:hover {
 <td><p>an n-qubit depolarizing error channel parameterized by a depolarization probability <span class="math notranslate nohighlight">\(p\)</span>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reset_error</span></code></p></td>
-<td><p>a single-qubit reset error parameterized by a probabilities <span class="math notranslate nohighlight">\(p_0, p_1\)</span> of resetting to the <span class="math notranslate nohighlight">\(|0\rangle\)</span>, <span class="math notranslate nohighlight">\(|1\rangle\)</span> state.</p></td>
+<td><p>被重新設定至 <span class="math notranslate nohighlight">\(|0\rangle\)</span>, <span class="math notranslate nohighlight">\(|1\rangle\)</span> 狀態的去極化機率 <span class="math notranslate nohighlight">\(p_0, p_1\)</span> 參數化的單量子位元重設誤差。</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">thermal_relaxation_error</span></code></p></td>
-<td><p>a single qubit thermal relaxation channel parameterized by relaxation time constants <span class="math notranslate nohighlight">\(T_1\)</span>, <span class="math notranslate nohighlight">\(T_2\)</span>, gate time <span class="math notranslate nohighlight">\(t\)</span>, and excited state thermal population <span class="math notranslate nohighlight">\(p_1\)</span>.</p></td>
+<td><p>一個被弛緩時間常數 <span class="math notranslate nohighlight">\(T_1\)</span>、 <span class="math notranslate nohighlight">\(T_2\)</span> 、閘時間 <span class="math notranslate nohighlight">\(t\)</span>，以及激發態熱分佈數量 :math:<a href="#id1"><span class="problematic" id="id2">`</span></a>p_1 參數化的單量子位元的熱弛緩通道。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">phase_amplitude_damping_error</span></code></p></td>
 <td><p>A single-qubit generalized combined phase and amplitude damping error channel given by an amplitude damping parameter <span class="math notranslate nohighlight">\(\lambda\)</span>, a phase damping parameter <span class="math notranslate nohighlight">\(\gamma\)</span>, and an excited state thermal population <span class="math notranslate nohighlight">\(p_1\)</span>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">amplitude_damping_error</span></code></p></td>
-<td><p>A single-qubit generalized amplitude damping error channel given by an amplitude damping parameter <span class="math notranslate nohighlight">\(\lambda\)</span>, and an excited state thermal population <span class="math notranslate nohighlight">\(p_1\)</span>.</p></td>
+<td><p>一個由振幅阻尼參數 <span class="math notranslate nohighlight">\(\lambda\)</span> 和激發態熱分佈數量 <span class="math notranslate nohighlight">\(p_1\)</span> 表示的單量子位元廣義化的振幅阻尼誤差通道。</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">phase_damping_error</span></code></p></td>
 <td><p>一個由相位阻尼參數 <span class="math notranslate nohighlight">\(\gamma\)</span> 表示的單量子位元相位阻尼誤差通道。</p></td>
@@ -870,7 +870,7 @@ ReadoutError([[0.95 0.05]
 <ol class="arabic simple">
 <li><p>全量子位元的量子誤差</p></li>
 <li><p>特定量子位元的量子誤差</p></li>
-<li><p>Non-local quantum error</p></li>
+<li><p>非本端量子誤差</p></li>
 </ol>
 <section id="全量子位元的量子誤差">
 <h3>全量子位元的量子誤差<a class="headerlink" href="#全量子位元的量子誤差" title="本標題的永久連結">¶</a></h3>
@@ -939,8 +939,8 @@ NoiseModel:
 </pre></div></div>
 </div>
 </section>
-<section id="Non-local-qubit-quantum-error">
-<h3>Non-local qubit quantum error<a class="headerlink" href="#Non-local-qubit-quantum-error" title="本標題的永久連結">¶</a></h3>
+<section id="非本端量子位元量子誤差">
+<h3>非本端量子位元量子誤差<a class="headerlink" href="#非本端量子位元量子誤差" title="本標題的永久連結">¶</a></h3>
 <p>This applies an error to a specific set of noise qubits after any occurrence of an instruction acting on a specific of gate qubits.</p>
 <p>It is added as <code class="docutils literal notranslate"><span class="pre">noise_model.add_nonlocal_quantum_error(error,</span> <span class="pre">instructions,</span> <span class="pre">instr_qubits,</span> <span class="pre">error_qubits)</span></code>:</p>
 <div class="nbinput docutils container">
@@ -1269,7 +1269,7 @@ NoiseModel:
   <div role="contentinfo">
     <p>
         &copy; Copyright 2021, Qiskit Development Team.
-      最後更新於 2021/08/23。
+      最後更新於 2021/08/25。
 
     </p>
   </div>
@@ -1301,7 +1301,7 @@ NoiseModel:
 <li><a class="reference internal" href="#新增誤差至雜訊模型">新增誤差至雜訊模型</a><ul>
 <li><a class="reference internal" href="#全量子位元的量子誤差">全量子位元的量子誤差</a></li>
 <li><a class="reference internal" href="#特定量子位元的量子誤差">特定量子位元的量子誤差</a></li>
-<li><a class="reference internal" href="#Non-local-qubit-quantum-error">Non-local qubit quantum error</a></li>
+<li><a class="reference internal" href="#非本端量子位元量子誤差">非本端量子位元量子誤差</a></li>
 <li><a class="reference internal" href="#使用雜訊模型執行雜訊模擬">使用雜訊模型執行雜訊模擬</a></li>
 </ul>
 </li>
