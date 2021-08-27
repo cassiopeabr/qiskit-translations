@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Rechercher" href="../search.html" />
-    <link rel="next" title="Pricing Basket Options" href="06_basket_option_pricing.html" />
+    <link rel="next" title="Calcul du prix d’options panier" href="06_basket_option_pricing.html" />
     <link rel="prev" title="Prix des options d’achat européennes" href="04_european_put_option_pricing.html" /> 
 
   
@@ -587,17 +587,18 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Fonction-de-Paiement">
 <h2>Fonction de Paiement<a class="headerlink" href="#Fonction-de-Paiement" title="Lien permanent vers ce titre">¶</a></h2>
-<p>The payoff function equals zero as long as the spot price at maturity <span class="math notranslate nohighlight">\(S_T\)</span> is less than the strike price <span class="math notranslate nohighlight">\(K_1\)</span>, then increases linearly, and is bounded by <span class="math notranslate nohighlight">\(K_2\)</span>. The implementation uses two comparators, that flip an ancilla qubit each from <span class="math notranslate nohighlight">\(\big|0\rangle\)</span> to <span class="math notranslate nohighlight">\(\big|1\rangle\)</span> if <span class="math notranslate nohighlight">\(S_T \geq K_1\)</span> and <span class="math notranslate nohighlight">\(S_T \leq K_2\)</span>, and these ancillas are used to control the linear part of the payoff function.</p>
-<p>The linear part itself is then approximated as follows. We exploit the fact that <span class="math notranslate nohighlight">\(\sin^2(y + \pi/4) \approx y + 1/2\)</span> for small <span class="math notranslate nohighlight">\(|y|\)</span>. Thus, for a given approximation rescaling factor <span class="math notranslate nohighlight">\(c_\text{approx} \in [0, 1]\)</span> and <span class="math notranslate nohighlight">\(x \in [0, 1]\)</span> we consider</p>
+<p>La fonction de gain est nulle tant que la somme des prix au comptant à l’échéance <span class="math notranslate nohighlight">\(S_T\)</span> est inférieure au prix d’exercice <span class="math notranslate nohighlight">\(K_1\)</span> puis cette fonction augmente linéairement en étant bornée par <span class="math notranslate nohighlight">\(K_2\)</span>. Cette implémentation repose sur un comparateur qui modifie un qubit auxilliaire de <span class="math notranslate nohighlight">\(\big|0\rangle\)</span> à <span class="math notranslate nohighlight">\(\big|1\rangle\)</span> si <span class="math notranslate nohighlight">\(S_T \geq K_1\)</span> et <span class="math notranslate nohighlight">\(S\_T \leq K\_2\)</span>, puis ce qubit auxilliaire est utilisé pour contrôler la partie linéaire de la fonction de gain.</p>
+<p>La partie linéaire proprement dite suit l’approximation ci-dessous. On exploite le fait que <span class="math notranslate nohighlight">\(\sin^2(y + \pi/4) \approx y + 1/2\)</span> lorsque <span class="math notranslate nohighlight">\(|y|\)</span> est petit.
+Ainsi, pour un facteur d’échelle d’approximation <span class="math notranslate nohighlight">\(c_\text{approx} \in [0, 1]\)</span> et <span class="math notranslate nohighlight">\(x \in [0, 1]\)</span> on considère</p>
 <div class="math notranslate nohighlight">
 \[\sin^2( \pi/2 * c_\text{approx} * ( x - 1/2 ) + \pi/4) \approx \pi/2 * c_\text{approx} * ( x - 1/2 ) + 1/2\]</div>
-<p>for small <span class="math notranslate nohighlight">\(c_\text{approx}\)</span>.</p>
-<p>We can easily construct an operator that acts as</p>
+<p>pour de petites valeurs de <span class="math notranslate nohighlight">\(c_\text{approx}\)</span>.</p>
+<p>Nous pouvons facilement construire un opérateur qui agit ainsi :</p>
 <div class="math notranslate nohighlight">
 \[\big|x\rangle \big|0\rangle \mapsto \big|x\rangle \left( \cos(a*x+b) \big|0\rangle + \sin(a*x+b) \big|1\rangle \right),\]</div>
-<p>using controlled Y-rotations.</p>
-<p>Eventually, we are interested in the probability of measuring <span class="math notranslate nohighlight">\(\big|1\rangle\)</span> in the last qubit, which corresponds to <span class="math notranslate nohighlight">\(\sin^2(a*x+b)\)</span>. Together with the approximation above, this allows to approximate the values of interest. The smaller we choose <span class="math notranslate nohighlight">\(c_\text{approx}\)</span>, the better the approximation. However, since we are then estimating a property scaled by <span class="math notranslate nohighlight">\(c_\text{approx}\)</span>, the number of evaluation qubits <span class="math notranslate nohighlight">\(m\)</span> needs to be adjusted accordingly.</p>
-<p>For more details on the approximation, we refer to: <a class="reference external" href="https://arxiv.org/abs/1806.06893">Quantum Risk Analysis. Woerner, Egger. 2018.</a></p>
+<p>en utilisant des Y-rotations contrôlées.</p>
+<p>Il est aussi intéressant de connaître la probabilité de mesurer <span class="math notranslate nohighlight">\(\big|1\rangle\)</span> sur le dernier qubit, correspondant à <span class="math notranslate nohighlight">\(\sin^2(a*x+b)\)</span>. En complément de l’approximation précédente, nous pouvons alors estimer la valeur des intérêts. Plus <span class="math notranslate nohighlight">\(c_\text{approx}\)</span> est choisi petit, meilleure est l’approximation. Cependant, puisque nous estimons une propriété dépendant de <span class="math notranslate nohighlight">\(c_\text{approx}\)</span>, le nombre de qubits d’évaluation <span class="math notranslate nohighlight">\(m\)</span> doit être choisi en conséquence.</p>
+<p>Pour plus de détails sur l’approximation, nous nous référons à : <a class="reference external" href="https://arxiv.org/abs/1806.06893">Quantum Risk Analysis. Woerner, Egger. 2018.</a></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -680,8 +681,8 @@ exact delta value:      0.9291
 </pre></div></div>
 </div>
 </div>
-<div class="section" id="Evaluate-Expected-Payoff">
-<h2>Evaluate Expected Payoff<a class="headerlink" href="#Evaluate-Expected-Payoff" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="Evaluer-le-paiement-attendu">
+<h2>Evaluer le paiement attendu<a class="headerlink" href="#Evaluer-le-paiement-attendu" title="Lien permanent vers ce titre">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
@@ -732,9 +733,9 @@ Confidence interval:    [0.5493, 0.5967]
 </pre></div></div>
 </div>
 </div>
-<div class="section" id="Evaluate-Delta">
-<h2>Evaluate Delta<a class="headerlink" href="#Evaluate-Delta" title="Lien permanent vers ce titre">¶</a></h2>
-<p>The Delta is a bit simpler to evaluate than the expected payoff. Similarly to the expected payoff, we use comparator circuits and ancilla qubits to identify the cases where <span class="math notranslate nohighlight">\(K_1 \leq S_T \leq K_2\)</span>. However, since we are only interested in the probability of this condition being true, we can directly use an ancilla qubit as the objective qubit in amplitude estimation without any further approximation.</p>
+<div class="section" id="Evaluation-du-Delta">
+<h2>Evaluation du Delta<a class="headerlink" href="#Evaluation-du-Delta" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Le Delta est un peu plus simple à évaluer que la fonction de gain. Tout comme pour la fonction de gain, nous utilisons un circuit comparateur et un qubit ancillaire pour identifier les cas où <span class="math notranslate nohighlight">\(K_1 \leq S_T \leq K_2\)</span>. Cependant, puisque nous ne sommes intéressés que par la probabilité que cette condition soit vraie, nous pouvons utiliser le qubit auxilliaire directement comme qubit objectif pour obtenir l’estimation d’amplitude sans approximations supplémentaires.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
@@ -853,7 +854,7 @@ Confidence interval:    [0.9277, 0.9305]
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="06_basket_option_pricing.html" class="btn btn-neutral float-right" title="Pricing Basket Options" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+        <a href="06_basket_option_pricing.html" class="btn btn-neutral float-right" title="Calcul du prix d’options panier" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
       
       
         <a href="04_european_put_option_pricing.html" class="btn btn-neutral" title="Prix des options d’achat européennes" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
@@ -892,8 +893,8 @@ Confidence interval:    [0.9277, 0.9305]
 <li><a class="reference internal" href="#Introduction">Introduction</a></li>
 <li><a class="reference internal" href="#Modèle-d'incertitude">Modèle d’incertitude</a></li>
 <li><a class="reference internal" href="#Fonction-de-Paiement">Fonction de Paiement</a></li>
-<li><a class="reference internal" href="#Evaluate-Expected-Payoff">Evaluate Expected Payoff</a></li>
-<li><a class="reference internal" href="#Evaluate-Delta">Evaluate Delta</a></li>
+<li><a class="reference internal" href="#Evaluer-le-paiement-attendu">Evaluer le paiement attendu</a></li>
+<li><a class="reference internal" href="#Evaluation-du-Delta">Evaluation du Delta</a></li>
 </ul>
 </li>
 </ul>
